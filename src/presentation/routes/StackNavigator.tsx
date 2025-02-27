@@ -1,11 +1,18 @@
-import { createStackNavigator } from "@react-navigation/stack"
-import { HomeScreen } from "../screens/home/HomeScreen";
-import { ProductsScreen } from "../screens/products/ProductsScreen";
-import { SettingsScreen } from "../screens/settings/SettingsScreen";
+import { createStackNavigator } from '@react-navigation/stack';
+import { HomeScreen } from '../screens/home/HomeScreen';
+import { ProductsScreen } from '../screens/products/ProductsScreen';
+import { SettingsScreen } from '../screens/settings/SettingsScreen';
 import { ProductScreen } from '../screens/products/ProductScreen';
 
+//DEFINIDIR PARAMETROS QUE RECIBIRAN LAS PANTALLAS
+export type RootStackParams = {
+    Home: undefined,
+    Product: { id: number, name:string},
+    Products: undefined,
+    Settings: undefined
+}
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParams>();
 
 export const StackNavigator = () => {
     return (

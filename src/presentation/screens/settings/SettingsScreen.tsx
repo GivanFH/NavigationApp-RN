@@ -1,11 +1,23 @@
 import { Text, View } from 'react-native';
+import { PrimaryButton } from '../../components/shared/PrimaryButton';
+import { globalStyles } from '../../theme/theme';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 export const SettingsScreen = () => {
+    const navigator = useNavigation()
+
     return (
-        <View>
-            <Text>
-                SettingsScreen
-            </Text>
+        <View style={globalStyles.container}>
+            <Text style={{ marginBottom: 10 }}>SettingsScreen</Text>
+
+            <PrimaryButton
+                label="Regresar"
+                onPress={() => navigator.goBack()}
+            />
+            <PrimaryButton
+                label="Regresar al home"
+                onPress={() => navigator.dispatch(StackActions.popToTop())}
+            />
         </View>
     );
 };
