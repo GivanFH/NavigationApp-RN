@@ -4,7 +4,7 @@ import { globalStyles } from '../../theme/theme';
 import { DrawerActions, NavigationProp, useNavigation } from '@react-navigation/native';
 import { PrimaryButton } from '../../components/shared/PrimaryButton';
 import { RootStackParams } from '../../routes/StackNavigator';
-import { Text } from 'react-native-gesture-handler';
+import { HamburguerMenu } from '../../components/shared/HamburguerMenu';
 
 export const HomeScreen = () => {
 
@@ -13,16 +13,16 @@ export const HomeScreen = () => {
     useEffect(() => {
         navigate.setOptions({
             headerLeft: () => (
-                <Pressable onPress={ () => navigate.dispatch( DrawerActions.toggleDrawer )}>
-                    <Text>Menu</Text>
+                <Pressable onPress={() => navigate.dispatch(DrawerActions.toggleDrawer)}>
+                    <HamburguerMenu />
                 </Pressable>
             )
         })
     });
     return (
         <View style={globalStyles.container}>
-            <PrimaryButton onPress={ () => navigate.navigate('Products' ) } label="Products"/>
-            <PrimaryButton onPress={ () => navigate.navigate('Settings' ) } label="Settings"/>
+            <PrimaryButton onPress={() => navigate.navigate('Products')} label="Products" />
+            <PrimaryButton onPress={() => navigate.navigate('Settings')} label="Settings" />
         </View>
     );
 };

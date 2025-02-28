@@ -1,8 +1,10 @@
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { StackNavigator } from './StackNavigator';
+// import { StackNavigator } from './StackNavigator';
 import { ProfileScreen } from '../screens/profile/ProfileScreen';
 import { globalColors } from '../theme/theme';
 import { Text, useWindowDimensions, View } from 'react-native';
+import { BottomTabsNavigator } from './BottomTabNavigator';
+import { IonIcon } from '../components/shared/IonIcon';
 
 const Drawer = createDrawerNavigator();
 
@@ -16,7 +18,7 @@ export const SideMenuNavigator = () => {
 
             screenOptions={{
                 headerShown: false,
-                drawerType: ( dimensions.width >= 758 ) ? 'permanent' : 'slide',
+                drawerType: (dimensions.width >= 758) ? 'permanent' : 'slide',
                 drawerActiveBackgroundColor: globalColors.primary,
                 drawerActiveTintColor: 'white',
                 drawerInactiveTintColor: globalColors.primary,
@@ -26,8 +28,14 @@ export const SideMenuNavigator = () => {
                 },
             }}
         >
-            <Drawer.Screen name="StackNavigator" component={StackNavigator} />
-            <Drawer.Screen name="Profile" component={ProfileScreen} />
+            <Drawer.Screen
+                options={{ drawerIcon: ({ color }) => (<IonIcon name='bonfire-outline' color={color} />) }}
+                name="Tabs"
+                component={BottomTabsNavigator} />
+            <Drawer.Screen
+                options={{ drawerIcon: ({ color }) => (<IonIcon name='bonfire-outline' color={color} />) }}
+                name="Profile"
+                component={ProfileScreen} />
         </Drawer.Navigator>
     );
 };
@@ -43,7 +51,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
                     borderRadius: 50
                 }}
             />
-            <DrawerItemList { ...props} />
+            <DrawerItemList {...props} />
             <Text> Hola mundo </Text>
         </DrawerContentScrollView>
     );

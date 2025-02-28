@@ -15,7 +15,7 @@ export const ProfileScreen = () => {
             paddingHorizontal: 20,
             marginTop: top
         }}>
-            <Text style={{  marginBottom: 10 }}>ProfileScreen</Text>
+            <Text style={{ marginBottom: 10 }}>ProfileScreen</Text>
             <PrimaryButton
                 onPress={() => navigate.dispatch(DrawerActions.toggleDrawer)}
                 label="Abrir Menú"
